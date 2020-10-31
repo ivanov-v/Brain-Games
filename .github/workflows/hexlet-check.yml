@@ -10,11 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Use Node.js
-      - uses: actions/setup-node@v1
+        uses: actions/setup-node@v1
+
       - name: Install
-      - run: make install
+        run: make install
+
       - name: Lint code
-      - run: make lint
+        run: make lint
+
       - name: Hexlet project check
         uses: hexlet/project-action@release
