@@ -9,13 +9,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check code
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
 
+      - name: Hexlet project check
+        uses: hexlet/project-action@release
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
 
       - run: make install
       - run: make lint
-
-      - name: Hexlet project check
-        uses: hexlet/project-action@release
