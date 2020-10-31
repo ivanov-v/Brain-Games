@@ -19,5 +19,8 @@
   "homepage": "https://github.com/ivanov-v/frontend-project-lvl1#readme",
   "bin": {
     "brain-games": "bin/brain-games.js"
+  },
+  "dependencies": {
+    "promptly": "^3.1.0"
   }
 }
