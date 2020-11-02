@@ -11,9 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Hexlet project check
-        uses: hexlet/project-action@release
-
       - name: Use Node.js
         uses: actions/setup-node@v1
 
@@ -22,3 +19,6 @@ jobs:
 
       - name: Lint code
         run: make lint
+
+      - name: Hexlet project check
+        uses: hexlet/project-action@release
