@@ -20,5 +20,5 @@ jobs:
       - name: Lint code
         run: make lint
 
-      - name: Hexlet project check
-        uses: hexlet/project-action@release
+#      - name: Hexlet project check
+#        uses: hexlet/project-action@release
