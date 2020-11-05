@@ -1,29 +1,15 @@
 import promptly from 'promptly';
 
 import boolToYesNo from './booleanConverter.js';
-import getRandomNumber from './random.js';
 import isEven from './isEven.js';
-
-const ROUNDS_COUNT = 3;
-const NUMBER_MIN = 1;
-const NUMBER_MAX = 20;
-
-async function greet() {
-  console.log('Welcome to the Brain Games!');
-
-  const name = await promptly.prompt('May I have your name?');
-
-  console.log(`Hello, ${name}!`);
-
-  return name;
-}
+import { greet, getRandomNumber, ROUNDS_COUNT } from '../../index.js';
 
 async function startGame() {
   const userName = await greet();
 
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
 
-  const numbers = [...Array(ROUNDS_COUNT)].map(() => getRandomNumber(NUMBER_MIN, NUMBER_MAX));
+  const numbers = [...Array(ROUNDS_COUNT)].map(() => getRandomNumber(1, 20));
 
   // eslint-disable-next-line no-restricted-syntax
   for (const number of numbers) {
