@@ -1,7 +1,9 @@
 import { cons, car, cdr } from '@hexlet/pairs';
 
 import promptly from 'promptly';
-import { getRandomNumber, greet, ROUNDS_COUNT } from '../../index.js';
+import {
+  congratulations, getRandomNumber, greet, ROUNDS_COUNT,
+} from '../../index.js';
 
 function createOperator(operatorString, operatorFunc) {
   return cons(operatorString, operatorFunc);
@@ -73,7 +75,7 @@ async function startGame() {
     }
   }
 
-  console.log(`Congratulations, ${userName}!`);
+  congratulations(userName);
 }
 
 export default startGame;

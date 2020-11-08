@@ -2,7 +2,9 @@ import promptly from 'promptly';
 
 import boolToYesNo from './booleanConverter.js';
 import isEven from './isEven.js';
-import { greet, getRandomNumber, ROUNDS_COUNT } from '../../index.js';
+import {
+  greet, getRandomNumber, ROUNDS_COUNT, congratulations,
+} from '../../index.js';
 
 async function startGame() {
   const userName = await greet();
@@ -28,7 +30,7 @@ async function startGame() {
     }
   }
 
-  console.log(`Congratulations, ${userName}!`);
+  congratulations(userName);
 }
 
 export default startGame;

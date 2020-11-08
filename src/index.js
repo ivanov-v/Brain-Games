@@ -15,3 +15,7 @@ export async function greet() {
 
   return name;
 }
+
+export function congratulations(userName) {
+  console.log(`Congratulations, ${userName}!`);
+}
