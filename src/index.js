@@ -1,4 +1,5 @@
 import promptly from 'promptly';
+import { cons, car, cdr } from '@hexlet/pairs';
 
 export const ROUNDS_COUNT = 3;
 
@@ -18,4 +19,16 @@ export async function greet() {
 
 export function congratulations(userName) {
   console.log(`Congratulations, ${userName}!`);
+}
+
+export function createQA(question, answer) {
+  return cons(question, answer);
+}
+
+export function getQuestion(qa) {
+  return car(qa);
+}
+
+export function getAnswer(qa) {
+  return cdr(qa);
 }
