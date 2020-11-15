@@ -23,7 +23,12 @@ export function createGame(description, qaGenerator, isFinite = true) {
   return async () => {
     console.log('Welcome to the Brain Games!');
 
-    const userName = await promptly.prompt('May I have your name?');
+    let userName;
+    try {
+      userName = await promptly.prompt('May I have your name?');
+    } catch (err) {
+      return;
+    }
 
     console.log(`Hello, ${userName}!`);
     console.log(description);
@@ -32,10 +37,17 @@ export function createGame(description, qaGenerator, isFinite = true) {
 
     while (isFinite ? roundNumber <= ROUNDS_COUNT : true) {
       const qa = qaGenerator();
+
       console.log(`Question: ${getQuestion(qa)}`);
 
       const correctAnswer = String(getAnswer(qa));
-      const userAnswer = await promptly.prompt('Your answer: ');
+      let userAnswer;
+
+      try {
+        userAnswer = await promptly.prompt('Your answer: ');
+      } catch (err) {
+        return;
+      }
 
       if (correctAnswer === userAnswer) {
         console.log('Correct!');
