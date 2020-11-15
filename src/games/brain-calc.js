@@ -1,7 +1,7 @@
 import { cons, car, cdr } from '@hexlet/pairs';
 
 import {
-  createGame, createQA, getRandomNumber,
+  createGame, createQA, getRandomFromRange,
 } from '../index.js';
 
 function createOperator(operatorString, operatorFunc) {
@@ -23,12 +23,12 @@ const multiOperator = createOperator('*', (number1, number2) => number1 * number
 function getRandomOperator() {
   const operators = [sumOperator, subOperator, multiOperator];
 
-  return operators[getRandomNumber(0, operators.length - 1)];
+  return operators[getRandomFromRange(0, operators.length - 1)];
 }
 
 function qaGenerator() {
-  const operand1 = getRandomNumber(0, 10);
-  const operand2 = getRandomNumber(0, 10);
+  const operand1 = getRandomFromRange(0, 10);
+  const operand2 = getRandomFromRange(0, 10);
   const operator = getRandomOperator();
   const operatorFunc = getOperatorFunc(operator);
   const operatorString = getOperatorString(operator);

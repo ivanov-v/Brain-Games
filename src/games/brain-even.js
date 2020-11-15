@@ -1,11 +1,11 @@
-import { getRandomNumber, createQA, createGame } from '../index.js';
+import { getRandomFromRange, createQA, createGame } from '../index.js';
 
 function isEven(num) {
   return num % 2 === 0;
 }
 
 function qaGenerator() {
-  const randomNumber = getRandomNumber(1, 20);
+  const randomNumber = getRandomFromRange(1, 20);
   const answer = isEven(randomNumber) ? 'yes' : 'no';
 
   return createQA(randomNumber, answer);

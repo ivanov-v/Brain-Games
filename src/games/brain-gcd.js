@@ -1,4 +1,4 @@
-import { getRandomNumber, createQA, createGame } from '../index.js';
+import { getRandomFromRange, createQA, createGame } from '../index.js';
 
 function getGcd(num1, num2) {
   let a = num1;
@@ -16,8 +16,8 @@ function getGcd(num1, num2) {
 }
 
 function qaGenerator() {
-  const num1 = getRandomNumber(1, 50);
-  const num2 = getRandomNumber(1, 50);
+  const num1 = getRandomFromRange(1, 50);
+  const num2 = getRandomFromRange(1, 50);
   const gcd = getGcd(num1, num2);
 
   return createQA(`${num1} ${num2}`, gcd);
