@@ -16,6 +16,6 @@ function qaGenerator() {
 
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const startGame = createGame(description, qaGenerator, false);
+const startGame = createGame(description, qaGenerator);
 
 export default startGame;

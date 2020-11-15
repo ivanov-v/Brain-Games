@@ -19,7 +19,7 @@ export function getAnswer(qa) {
   return cdr(qa);
 }
 
-export function createGame(description, qaGenerator, isFinite = true) {
+export function createGame(description, qaGenerator) {
   return async () => {
     console.log('Welcome to the Brain Games!');
 
@@ -35,7 +35,7 @@ export function createGame(description, qaGenerator, isFinite = true) {
 
     let roundNumber = 1;
 
-    while (isFinite ? roundNumber <= ROUNDS_COUNT : true) {
+    while (roundNumber <= ROUNDS_COUNT) {
       const qa = qaGenerator();
 
       console.log(`Question: ${getQuestion(qa)}`);
@@ -54,10 +54,8 @@ export function createGame(description, qaGenerator, isFinite = true) {
       } else {
         console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
 
-        if (isFinite) {
-          console.log(`Let's try again, ${userName}!`);
-          return;
-        }
+        console.log(`Let's try again, ${userName}!`);
+        return;
       }
 
       roundNumber += 1;
