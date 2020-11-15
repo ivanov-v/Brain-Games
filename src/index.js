@@ -7,20 +7,6 @@ export function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-export async function greet() {
-  console.log('Welcome to the Brain Games!');
-
-  const name = await promptly.prompt('May I have your name?');
-
-  console.log(`Hello, ${name}!`);
-
-  return name;
-}
-
-export function congratulations(userName) {
-  console.log(`Congratulations, ${userName}!`);
-}
-
 export function createQA(question, answer) {
   return cons(question, answer);
 }
@@ -31,4 +17,37 @@ export function getQuestion(qa) {
 
 export function getAnswer(qa) {
   return cdr(qa);
+}
+
+export function createGame(description, qaGenerator) {
+  return async () => {
+    console.log('Welcome to the Brain Games!');
+
+    const userName = await promptly.prompt('May I have your name?');
+
+    console.log(`Hello, ${userName}!`);
+
+    console.log(description);
+
+    const qaList = [...Array(ROUNDS_COUNT)].map(() => qaGenerator());
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const qa of qaList) {
+      console.log(`Question: ${getQuestion(qa)}`);
+
+      const correctAnswer = String(getAnswer(qa));
+      const userAnswer = await promptly.prompt('Your answer: ');
+
+      if (correctAnswer === userAnswer) {
+        console.log('Correct!');
+      } else {
+        console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+        console.log(`Let's try again, ${userName}!`);
+
+        return;
+      }
+    }
+
+    console.log(`Congratulations, ${userName}!`);
+  };
 }
