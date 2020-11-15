@@ -26,7 +26,6 @@ export function createGame(description, qaGenerator) {
     const userName = await promptly.prompt('May I have your name?');
 
     console.log(`Hello, ${userName}!`);
-
     console.log(description);
 
     const qaList = [...Array(ROUNDS_COUNT)].map(() => qaGenerator());
