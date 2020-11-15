@@ -28,9 +28,9 @@ export function createGame(description, qaGenerator, isFinite = true) {
     console.log(`Hello, ${userName}!`);
     console.log(description);
 
-    let roundsLeft = ROUNDS_COUNT;
+    let roundNumber = 1;
 
-    while (roundsLeft > 0) {
+    while (isFinite ? roundNumber <= ROUNDS_COUNT : true) {
       const qa = qaGenerator();
       console.log(`Question: ${getQuestion(qa)}`);
 
@@ -48,7 +48,7 @@ export function createGame(description, qaGenerator, isFinite = true) {
         }
       }
 
-      roundsLeft -= isFinite ? 1 : -1;
+      roundNumber += 1;
     }
 
     console.log(`Congratulations, ${userName}!`);
