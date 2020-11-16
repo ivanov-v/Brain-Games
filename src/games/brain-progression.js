@@ -2,12 +2,10 @@ import { createQuestionAnswer, createGame } from '../index.js';
 import getRandomFromRange from '../helpers.js';
 
 function createProgression(first, step, length) {
-  const result = [first];
-  let acc = first;
+  const result = [];
 
-  for (let i = 1; i < length; i += 1) {
-    acc += step;
-    result.push(acc);
+  for (let i = first; result.length < length; i += step) {
+    result.push(i);
   }
 
   return result;
