@@ -3,7 +3,7 @@ import { cons, car, cdr } from '@hexlet/pairs';
 import {
   createGame, createQuestionAnswer,
 } from '../index.js';
-import getRandomFromRange from '../helpers.js';
+import { getRandomFromRange } from '../helpers.js';
 
 function createOperator(operatorString, operatorFunc) {
   return cons(operatorString, operatorFunc);
