@@ -1,5 +1,5 @@
 import { createQuestionAnswer, createGame } from '../index.js';
-import { getRandomFromRange } from '../helpers.js';
+import getRandomFromRange from '../helpers.js';
 
 function isPrime(number) {
   for (let i = 2; i < number; i += 1) {

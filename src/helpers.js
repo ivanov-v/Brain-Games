@@ -1,3 +1,3 @@
-export function getRandomFromRange(min, max) {
+export default function getRandomFromRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }

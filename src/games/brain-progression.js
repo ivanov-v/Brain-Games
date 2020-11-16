@@ -1,5 +1,5 @@
 import { createQuestionAnswer, createGame } from '../index.js';
-import { getRandomFromRange } from '../helpers.js';
+import getRandomFromRange from '../helpers.js';
 
 function createProgression(first, step, length) {
   const result = [first];
