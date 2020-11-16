@@ -1,4 +1,4 @@
-import { createQuestionAnswer, createGame } from '../index.js';
+import { generateRound, createGame } from '../index.js';
 import { getRandomFromRange } from '../helpers.js';
 
 function isPrime(number) {
@@ -15,17 +15,17 @@ function isPrime(number) {
   return true;
 }
 
-function questionAnswerGenerator() {
+function roundGenerator() {
   const number = getRandomFromRange(1, 50);
 
   const question = String(number);
   const answer = isPrime(number) ? 'yes' : 'no';
 
-  return createQuestionAnswer(question, answer);
+  return generateRound(question, answer);
 }
 
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 export default () => {
-  createGame(description, questionAnswerGenerator);
+  createGame(description, roundGenerator);
 };

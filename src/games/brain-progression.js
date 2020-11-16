@@ -1,4 +1,4 @@
-import { createQuestionAnswer, createGame } from '../index.js';
+import { generateRound, createGame } from '../index.js';
 import { getRandomFromRange } from '../helpers.js';
 
 function createProgression(first, step, length) {
@@ -11,7 +11,7 @@ function createProgression(first, step, length) {
   return result;
 }
 
-function questionAnswerGenerator() {
+function roundGenerator() {
   const first = getRandomFromRange(1, 10);
   const step = getRandomFromRange(1, 5);
   const length = getRandomFromRange(5, 10);
@@ -21,11 +21,11 @@ function questionAnswerGenerator() {
   const question = progression.map((elem) => (elem === hiddenElem ? '..' : elem)).join(' ');
   const answer = String(hiddenElem);
 
-  return createQuestionAnswer(question, answer);
+  return generateRound(question, answer);
 }
 
 const description = 'What number is missing in the progression?';
 
 export default () => {
-  createGame(description, questionAnswerGenerator);
+  createGame(description, roundGenerator);
 };

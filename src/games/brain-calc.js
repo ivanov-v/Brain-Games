@@ -1,7 +1,7 @@
 import { cons, car, cdr } from '@hexlet/pairs';
 
 import {
-  createGame, createQuestionAnswer,
+  createGame, generateRound,
 } from '../index.js';
 import { getRandomFromRange } from '../helpers.js';
 
@@ -27,7 +27,7 @@ function getRandomOperation() {
   return operations[getRandomFromRange(0, operations.length - 1)];
 }
 
-function questionAnswerGenerator() {
+function roundGenerator() {
   const operand1 = getRandomFromRange(0, 10);
   const operand2 = getRandomFromRange(0, 10);
   const operation = getRandomOperation();
@@ -37,11 +37,11 @@ function questionAnswerGenerator() {
   const question = `${operand1} ${operator} ${operand2}`;
   const answer = String(action(operand1, operand2));
 
-  return createQuestionAnswer(question, answer);
+  return generateRound(question, answer);
 }
 
 const description = 'What is the result of the expression?';
 
 export default () => {
-  createGame(description, questionAnswerGenerator);
+  createGame(description, roundGenerator);
 };

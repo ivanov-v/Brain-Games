@@ -3,19 +3,19 @@ import { cons, car, cdr } from '@hexlet/pairs';
 
 export const ROUNDS_COUNT = 3;
 
-export function createQuestionAnswer(question, answer) {
+export function generateRound(question, answer) {
   return cons(question, answer);
 }
 
-export function getQuestion(qa) {
-  return car(qa);
+export function getQuestion(round) {
+  return car(round);
 }
 
-export function getAnswer(qa) {
-  return cdr(qa);
+export function getAnswer(round) {
+  return cdr(round);
 }
 
-export async function createGame(description, qaGenerator) {
+export async function createGame(description, roundGenerator) {
   try {
     console.log('Welcome to the Brain Games!');
 
@@ -27,11 +27,11 @@ export async function createGame(description, qaGenerator) {
     let roundNumber = 1;
 
     while (roundNumber <= ROUNDS_COUNT) {
-      const qa = qaGenerator();
+      const round = roundGenerator();
 
-      console.log(`Question: ${getQuestion(qa)}`);
+      console.log(`Question: ${getQuestion(round)}`);
 
-      const correctAnswer = getAnswer(qa);
+      const correctAnswer = getAnswer(round);
       const userAnswer = await promptly.prompt('Your answer: ');
 
       if (correctAnswer !== userAnswer) {
@@ -41,7 +41,6 @@ export async function createGame(description, qaGenerator) {
       }
 
       console.log('Correct!');
-
       roundNumber += 1;
     }
 

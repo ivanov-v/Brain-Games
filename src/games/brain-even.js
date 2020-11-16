@@ -1,21 +1,21 @@
-import { createQuestionAnswer, createGame } from '../index.js';
+import { generateRound, createGame } from '../index.js';
 import { getRandomFromRange } from '../helpers.js';
 
 function isEven(num) {
   return num % 2 === 0;
 }
 
-function questionAnswerGenerator() {
+function roundGenerator() {
   const randomNum = getRandomFromRange(1, 20);
 
   const question = String(randomNum);
   const answer = isEven(randomNum) ? 'yes' : 'no';
 
-  return createQuestionAnswer(question, answer);
+  return generateRound(question, answer);
 }
 
 const description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 export default () => {
-  createGame(description, questionAnswerGenerator);
+  createGame(description, roundGenerator);
 };
