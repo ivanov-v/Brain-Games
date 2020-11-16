@@ -44,14 +44,13 @@ export function createGame(description, qaGenerator) {
         return;
       }
 
-      if (correctAnswer === userAnswer) {
-        console.log('Correct!');
-      } else {
+      if (correctAnswer !== userAnswer) {
         console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-
         console.log(`Let's try again, ${userName}!`);
         return;
       }
+
+      console.log('Correct!');
 
       roundNumber += 1;
     }
