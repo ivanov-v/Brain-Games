@@ -2,10 +2,17 @@ import { createQuestionAnswer, createGame } from '../index.js';
 import { getRandomFromRange } from '../helpers.js';
 
 function isPrime(number) {
-  for (let i = 2; i < number; i += 1) {
-    if (number % i === 0) return false;
+  if (number < 2) {
+    return false;
   }
-  return number > 1;
+
+  for (let i = 2; i <= number / 2; i += 1) {
+    if (number % i === 0) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
 function questionAnswerGenerator() {
