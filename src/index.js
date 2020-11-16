@@ -23,12 +23,7 @@ export function createGame(description, qaGenerator) {
   return async () => {
     console.log('Welcome to the Brain Games!');
 
-    let userName;
-    try {
-      userName = await promptly.prompt('May I have your name?');
-    } catch (err) {
-      return;
-    }
+    const userName = await promptly.prompt('May I have your name?', { default: 'User' });
 
     console.log(`Hello, ${userName}!`);
     console.log(description);
