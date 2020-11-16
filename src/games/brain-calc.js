@@ -42,6 +42,6 @@ function questionAnswerGenerator() {
 
 const description = 'What is the result of the expression?';
 
-const startGame = createGame(description, questionAnswerGenerator);
-
-export default startGame;
+export default () => {
+  createGame(description, questionAnswerGenerator);
+};

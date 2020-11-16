@@ -19,6 +19,6 @@ function questionAnswerGenerator() {
 
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const startGame = createGame(description, questionAnswerGenerator);
-
-export default startGame;
+export default () => {
+  createGame(description, questionAnswerGenerator);
+};

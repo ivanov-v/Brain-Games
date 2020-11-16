@@ -15,42 +15,40 @@ export function getAnswer(qa) {
   return cdr(qa);
 }
 
-export function createGame(description, qaGenerator) {
-  return async () => {
-    console.log('Welcome to the Brain Games!');
+export async function createGame(description, qaGenerator) {
+  console.log('Welcome to the Brain Games!');
 
-    const userName = await promptly.prompt('May I have your name?', { default: 'User' });
+  const userName = await promptly.prompt('May I have your name?', { default: 'User' });
 
-    console.log(`Hello, ${userName}!`);
-    console.log(description);
+  console.log(`Hello, ${userName}!`);
+  console.log(description);
 
-    let roundNumber = 1;
+  let roundNumber = 1;
 
-    while (roundNumber <= ROUNDS_COUNT) {
-      const qa = qaGenerator();
+  while (roundNumber <= ROUNDS_COUNT) {
+    const qa = qaGenerator();
 
-      console.log(`Question: ${getQuestion(qa)}`);
+    console.log(`Question: ${getQuestion(qa)}`);
 
-      const correctAnswer = getAnswer(qa);
-      let userAnswer;
+    const correctAnswer = getAnswer(qa);
+    let userAnswer;
 
-      try {
-        userAnswer = await promptly.prompt('Your answer: ');
-      } catch (err) {
-        return;
-      }
-
-      if (correctAnswer !== userAnswer) {
-        console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-        console.log(`Let's try again, ${userName}!`);
-        return;
-      }
-
-      console.log('Correct!');
-
-      roundNumber += 1;
+    try {
+      userAnswer = await promptly.prompt('Your answer: ');
+    } catch (err) {
+      return;
     }
 
-    console.log(`Congratulations, ${userName}!`);
-  };
+    if (correctAnswer !== userAnswer) {
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+      console.log(`Let's try again, ${userName}!`);
+      return;
+    }
+
+    console.log('Correct!');
+
+    roundNumber += 1;
+  }
+
+  console.log(`Congratulations, ${userName}!`);
 }

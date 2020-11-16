@@ -29,6 +29,6 @@ function questionAnswerGenerator() {
 
 const description = 'Find the greatest common divisor of given numbers.';
 
-const startGame = createGame(description, questionAnswerGenerator);
-
-export default startGame;
+export default () => {
+  createGame(description, questionAnswerGenerator);
+};

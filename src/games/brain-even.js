@@ -16,6 +16,6 @@ function questionAnswerGenerator() {
 
 const description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-const startGame = createGame(description, questionAnswerGenerator);
-
-export default startGame;
+export default () => {
+  createGame(description, questionAnswerGenerator);
+};

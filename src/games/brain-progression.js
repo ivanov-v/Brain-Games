@@ -26,6 +26,6 @@ function questionAnswerGenerator() {
 
 const description = 'What number is missing in the progression?';
 
-const startGame = createGame(description, questionAnswerGenerator);
-
-export default startGame;
+export default () => {
+  createGame(description, questionAnswerGenerator);
+};
