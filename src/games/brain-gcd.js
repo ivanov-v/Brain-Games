@@ -2,18 +2,7 @@ import { createQuestionAnswer, createGame } from '../index.js';
 import { getRandomFromRange } from '../helpers.js';
 
 function getGcd(num1, num2) {
-  let a = num1;
-  let b = num2;
-
-  while (a !== b) {
-    if (a > b) {
-      a -= b;
-    } else {
-      b -= a;
-    }
-  }
-
-  return a;
+  return num2 === 0 ? num1 : getGcd(num2, num1 % num2);
 }
 
 function questionAnswerGenerator() {
