@@ -9,12 +9,12 @@ function createOperation(operator, action) {
   return cons(operator, action);
 }
 
-function getOperator(operator) {
-  return car(operator);
+function getOperator(operation) {
+  return car(operation);
 }
 
-function getAction(operator) {
-  return cdr(operator);
+function getAction(operation) {
+  return cdr(operation);
 }
 
 const sumOperation = createOperation('+', (num1, num2) => num1 + num2);
