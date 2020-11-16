@@ -20,7 +20,7 @@ function qaGenerator() {
   const hiddenElem = progression[getRandomFromRange(0, progression.length - 1)];
   const question = progression.map((elem) => (elem === hiddenElem ? '..' : elem)).join(' ');
 
-  return createQA(question, hiddenElem);
+  return createQA(question, String(hiddenElem));
 }
 
 const description = 'What number is missing in the progression?';

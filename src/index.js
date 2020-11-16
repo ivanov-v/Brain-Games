@@ -35,7 +35,7 @@ export function createGame(description, qaGenerator) {
 
       console.log(`Question: ${getQuestion(qa)}`);
 
-      const correctAnswer = String(getAnswer(qa));
+      const correctAnswer = getAnswer(qa);
       let userAnswer;
 
       try {

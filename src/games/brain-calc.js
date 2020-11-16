@@ -33,7 +33,7 @@ function qaGenerator() {
   const operatorFunc = getOperatorFunc(operator);
   const operatorString = getOperatorString(operator);
   const expResultString = `${operand1} ${operatorString} ${operand2}`;
-  const expResult = operatorFunc(operand1, operand2);
+  const expResult = String(operatorFunc(operand1, operand2));
 
   return createQA(expResultString, expResult);
 }
