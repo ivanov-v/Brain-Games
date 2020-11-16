@@ -3,11 +3,7 @@ import { cons, car, cdr } from '@hexlet/pairs';
 
 export const ROUNDS_COUNT = 3;
 
-export function getRandomFromRange(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-export function createQA(question, answer) {
+export function createQuestionAnswer(question, answer) {
   return cons(question, answer);
 }
 

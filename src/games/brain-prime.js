@@ -1,4 +1,5 @@
-import { getRandomFromRange, createQA, createGame } from '../index.js';
+import { createQuestionAnswer, createGame } from '../index.js';
+import { getRandomFromRange } from '../helpers';
 
 function isPrime(number) {
   for (let i = 2; i < number; i += 1) {
@@ -7,15 +8,17 @@ function isPrime(number) {
   return number > 1;
 }
 
-function qaGenerator() {
+function questionAnswerGenerator() {
   const number = getRandomFromRange(1, 50);
+
+  const question = String(number);
   const answer = isPrime(number) ? 'yes' : 'no';
 
-  return createQA(number, answer);
+  return createQuestionAnswer(question, answer);
 }
 
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const startGame = createGame(description, qaGenerator);
+const startGame = createGame(description, questionAnswerGenerator);
 
 export default startGame;

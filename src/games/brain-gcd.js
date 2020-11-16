@@ -1,4 +1,5 @@
-import { getRandomFromRange, createQA, createGame } from '../index.js';
+import { createQuestionAnswer, createGame } from '../index.js';
+import { getRandomFromRange } from '../helpers';
 
 function getGcd(num1, num2) {
   let a = num1;
@@ -15,16 +16,19 @@ function getGcd(num1, num2) {
   return a;
 }
 
-function qaGenerator() {
+function questionAnswerGenerator() {
   const num1 = getRandomFromRange(1, 50);
   const num2 = getRandomFromRange(1, 50);
-  const gcd = String(getGcd(num1, num2));
+  const gcd = getGcd(num1, num2);
 
-  return createQA(`${num1} ${num2}`, gcd);
+  const question = `${num1} ${num2}`;
+  const answer = String(gcd);
+
+  return createQuestionAnswer(question, answer);
 }
 
 const description = 'Find the greatest common divisor of given numbers.';
 
-const startGame = createGame(description, qaGenerator);
+const startGame = createGame(description, questionAnswerGenerator);
 
 export default startGame;

@@ -1,18 +1,21 @@
-import { getRandomFromRange, createQA, createGame } from '../index.js';
+import { createQuestionAnswer, createGame } from '../index.js';
+import { getRandomFromRange } from '../helpers';
 
 function isEven(num) {
   return num % 2 === 0;
 }
 
-function qaGenerator() {
-  const randomNumber = getRandomFromRange(1, 20);
-  const answer = isEven(randomNumber) ? 'yes' : 'no';
+function questionAnswerGenerator() {
+  const randomNum = getRandomFromRange(1, 20);
 
-  return createQA(randomNumber, answer);
+  const question = String(randomNum);
+  const answer = isEven(randomNum) ? 'yes' : 'no';
+
+  return createQuestionAnswer(question, answer);
 }
 
 const description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-const startGame = createGame(description, qaGenerator);
+const startGame = createGame(description, questionAnswerGenerator);
 
 export default startGame;
