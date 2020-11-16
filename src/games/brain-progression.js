@@ -4,8 +4,14 @@ import { getRandomFromRange } from '../helpers.js';
 function createProgression(first, step, length) {
   const result = [];
 
-  for (let i = first; result.length < length; i += step) {
-    result.push(i);
+  for (let i = 0; i < length - 1; i += 1) {
+    if (i === 0) {
+      result.push(first);
+    }
+
+    const last = result[result.length - 1];
+
+    result.push(last + step);
   }
 
   return result;
@@ -16,7 +22,8 @@ function roundGenerator() {
   const step = getRandomFromRange(1, 5);
   const length = getRandomFromRange(5, 10);
   const progression = createProgression(first, step, length);
-  const hiddenElem = progression[getRandomFromRange(0, progression.length - 1)];
+  const randomIndex = getRandomFromRange(0, progression.length - 1);
+  const hiddenElem = progression[randomIndex];
 
   const question = progression.map((elem) => (elem === hiddenElem ? '..' : elem)).join(' ');
   const answer = String(hiddenElem);
