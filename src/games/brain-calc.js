@@ -5,37 +5,37 @@ import {
 } from '../index.js';
 import { getRandomFromRange } from '../helpers.js';
 
-function createOperator(operatorString, operatorFunc) {
-  return cons(operatorString, operatorFunc);
+function createOperation(operator, action) {
+  return cons(operator, action);
 }
 
-function getOperatorString(operator) {
+function getOperator(operator) {
   return car(operator);
 }
 
-function getOperatorFunc(operator) {
+function getAction(operator) {
   return cdr(operator);
 }
 
-const sumOperator = createOperator('+', (number1, number2) => number1 + number2);
-const subOperator = createOperator('-', (number1, number2) => number1 - number2);
-const multiOperator = createOperator('*', (number1, number2) => number1 * number2);
+const sumOperation = createOperation('+', (num1, num2) => num1 + num2);
+const subOperation = createOperation('-', (num1, num2) => num1 - num2);
+const multiOperation = createOperation('*', (num1, num2) => num1 * num2);
 
-function getRandomOperator() {
-  const operators = [sumOperator, subOperator, multiOperator];
+const operations = [sumOperation, subOperation, multiOperation];
 
-  return operators[getRandomFromRange(0, operators.length - 1)];
+function getRandomOperation() {
+  return operations[getRandomFromRange(0, operations.length - 1)];
 }
 
 function questionAnswerGenerator() {
   const operand1 = getRandomFromRange(0, 10);
   const operand2 = getRandomFromRange(0, 10);
-  const operator = getRandomOperator();
-  const operatorFunc = getOperatorFunc(operator);
-  const operatorString = getOperatorString(operator);
+  const operation = getRandomOperation();
+  const action = getAction(operation);
+  const operator = getOperator(operation);
 
-  const question = `${operand1} ${operatorString} ${operand2}`;
-  const answer = String(operatorFunc(operand1, operand2));
+  const question = `${operand1} ${operator} ${operand2}`;
+  const answer = String(action(operand1, operand2));
 
   return createQuestionAnswer(question, answer);
 }
