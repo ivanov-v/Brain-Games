@@ -4,14 +4,8 @@ import { getRandomFromRange } from '../helpers.js';
 function createProgression(first, step, length) {
   const result = [];
 
-  for (let i = 0; i < length - 1; i += 1) {
-    if (i === 0) {
-      result.push(first);
-    }
-
-    const last = result[result.length - 1];
-
-    result.push(last + step);
+  for (let i = 0; i < length; i += 1) {
+    result.push(first + i * step);
   }
 
   return result;
