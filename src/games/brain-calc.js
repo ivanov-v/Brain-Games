@@ -42,6 +42,6 @@ function roundGenerator() {
 
 const description = 'What is the result of the expression?';
 
-export default () => {
+export default function startGame() {
   createGame(description, roundGenerator);
-};
+}

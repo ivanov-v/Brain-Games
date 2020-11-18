@@ -16,6 +16,6 @@ function roundGenerator() {
 
 const description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-export default () => {
+export default function startGame() {
   createGame(description, roundGenerator);
-};
+}

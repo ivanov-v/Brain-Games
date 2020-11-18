@@ -19,7 +19,9 @@ function roundGenerator() {
   const randomIndex = getRandomFromRange(0, progression.length - 1);
   const hiddenElem = progression[randomIndex];
 
-  const question = progression.map((elem) => (elem === hiddenElem ? '..' : elem)).join(' ');
+  const question = progression
+    .map((elem) => (elem === hiddenElem ? '..' : elem))
+    .join(' ');
   const answer = String(hiddenElem);
 
   return generateRound(question, answer);
@@ -27,6 +29,6 @@ function roundGenerator() {
 
 const description = 'What number is missing in the progression?';
 
-export default () => {
+export default function startGame() {
   createGame(description, roundGenerator);
-};
+}
